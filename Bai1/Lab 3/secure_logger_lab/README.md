@@ -1,8 +1,12 @@
 # BÁO CÁO THỰC HÀNH: GHI NHẬT KÝ ƯU TIÊN BẢO MẬT (SECURE LOGGER LAB)
-
+- ### 📋 Thông tin chung
 - **Môn học:** Thực hành Lập trình An toàn Thông tin
 - **Bài thực hành:** Lab 3
 - **Mã nguồn:** `secure_logger_lab`
+
+- **Sinh viên thực hiện:** Nhan Huỳnh Lâm
+- **Mã số sinh viên (MSSV):** 2387700037
+- **Lớp / Nhóm:** ST4
 
 ---
 
@@ -99,7 +103,7 @@ Khi chạy lệnh `python app.py`, server Flask lắng nghe các kết nối t�
 - **Body (raw JSON):**
 ```json
 {
-  "email": "sinhvien@uit.edu.vn",
+  "email": "nhanhuynhlam@hutech.edu.vn",
   "url": "https://example.com",
   "filename": "baitaplab3.pdf",
   "sql": "admin' OR 1=1--",
