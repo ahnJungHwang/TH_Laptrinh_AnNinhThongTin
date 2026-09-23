@@ -1,11 +1,8 @@
-![Hình ảnh 1](./images/image1.png). 
-Lỗi có ký tự khác trước tên file đã được sửa
+![Hình ảnh 1](./images/image1.png). Lỗi có ký tự khác trước tên file đã được sửa
 
-![Hình ảnh 2](./images/image2.png). 
-Lỗi có các ký tự . , ' ; trước @ vẫn basoo email hợp lệ đã được sửa.
+![Hình ảnh 2](./images/image2.png). Lỗi có các ký tự . , ' ; trước @ vẫn báo email hợp lệ đã được sửa.
 
-![Hình ảnh 3](./images/image3.png). 
-Lỗi URL để trống và có thể chèn như http://exampl$e.com có ký tự $ bị lỗi đã được sửa. 
+![Hình ảnh 3](./images/image3.png). Lỗi URL để trống và có thể chèn như http://exampl$e.com có ký tự $ bị lỗi đã được sửa. 
 
 ![Hình ảnh 4](./images/image4.png).
 

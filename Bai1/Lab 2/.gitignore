@@ -1,0 +1,13 @@
+# GitSecure log file (theo yêu cầu Lab 2 trang 24)
+gitsecure.log
+
+# Môi trường ảo (không đưa lên repo)
+.venv/
+venv/
+ENV/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class

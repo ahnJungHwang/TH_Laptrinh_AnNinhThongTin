@@ -1,0 +1,93 @@
+#!/usr/bin/env python
+import os, re, subprocess, sys, stat, platform
+from datetime import datetime
+
+LAB_DIR = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
+LOG_FILE = os.path.join(LAB_DIR, "gitsecure.log")
+SENSITIVE_PATTERNS = [
+    r"apikey\s*=\s*['\"][A-Za-z0-9_\-]{16,}['\"]",
+    r"secret\s*=\s*['\"][A-Za-z0-9_\-]{8,}['\"]",
+    r"password\s*=\s*['\"][^'\"]{4,}['\"]",
+    r"token\s*=\s*['\"][A-Za-z0-9]{10,}['\"]",
+    r"(AKIA|ASIA)[A-Z0-9]{16}"
+]
+
+def log(msg):
+    with open(LOG_FILE, "a", encoding="utf-8") as f:
+        f.write(f"[{datetime.now()}] {msg}\n")
+
+def scan_sensitive(file_path):
+    try:
+        with open(file_path, "r", errors="ignore", encoding="utf-8") as f:
+            content = f.read()
+        for pattern in SENSITIVE_PATTERNS:
+            if re.search(pattern, content, re.IGNORECASE):
+                return f"Sensitive info found in {file_path}: pattern {pattern}"
+    except Exception:
+        return None
+    return None
+
+def check_permissions(file_path):
+    # Cập nhật theo hướng dẫn trang 25 dành cho Windows
+    if platform.system() == "Windows":
+        return None
+    st = os.stat(file_path)
+    if st.st_mode & stat.S_IWOTH:
+        return f"File {file_path} is world-writable!"
+    return None
+
+def run_bandit():
+    try:
+        # Hỗ trợ tìm bandit trong .venv nếu chưa kích hoạt
+        venv_bandit = os.path.join(LAB_DIR, ".venv", "Scripts", "bandit.exe")
+        bandit_cmd = venv_bandit if os.path.exists(venv_bandit) else "bandit"
+        
+        venv_dir = os.path.join(LAB_DIR, ".venv")
+        cmd = [bandit_cmd, "-r", LAB_DIR]
+        if os.path.isdir(venv_dir):
+            cmd += ["-x", venv_dir]
+            
+        result = subprocess.run(cmd, capture_output=True, text=True)
+        if "SEVERITY: High" in result.stdout:
+            log("Bandit: High severity issues found.")
+            return "Bandit: High severity issues found."
+    except FileNotFoundError:
+        return "Bandit not installed. Run: pip install bandit"
+    return None
+
+def resolve_file(file):
+    if os.path.isfile(file):
+        return file
+    try:
+        git_root = subprocess.check_output(["git", "rev-parse", "--show-toplevel"]).decode().strip()
+        candidate = os.path.join(git_root, file)
+        if os.path.isfile(candidate):
+            return candidate
+    except Exception:
+        pass
+    return None
+
+def main():
+    findings = []
+    files = subprocess.check_output(["git", "diff", "--cached", "--name-only"]).decode().splitlines()
+    for file in files:
+        resolved = resolve_file(file)
+        if not resolved: continue
+        result = scan_sensitive(resolved)
+        if result: findings.append(f"Sensitive info found in {file}: {result.split(': ', 1)[-1]}")
+        perms = check_permissions(resolved)
+        if perms: findings.append(f"File {file} is world-writable!")
+    bandit_result = run_bandit()
+    if bandit_result: findings.append(bandit_result)
+
+    if findings:
+        print("\nCOMMIT BLOCKED by GitSecure:")
+        for f in findings:
+            print("- ", f)
+            log(f)
+        sys.exit(1)
+    else:
+        print("GitSecure: All checks passed.")
+
+if __name__ == "__main__":
+    main()
