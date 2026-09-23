@@ -1,0 +1,3 @@
+{"timestamp": "2026-09-23T10:16:44.625729Z", "level": "INFO", "message": "Validation check performed", "data": "{'email': '<email_masked>'}", "results": "{'email': True, 'url': False, 'filename': False, 'sql': '', 'html': ''}"}
+{"timestamp": "2026-09-23T10:19:19.215136Z", "level": "WARNING", "message": "Invalid JSON received", "data": "b''"}
+{"timestamp": "2026-09-23T10:21:35.165210Z", "level": "INFO", "message": "Validation check performed", "data": "{'email': '<email_masked>', 'url': 'https://example.com', 'filename': 'baitaplab3.pdf', 'sql': \"admin' OR 1=1--\", 'html': \"<script>alert('hack')</script>\"}", "results": "{'email': True, 'url': True, 'filename': True, 'sql': 'admin  1=1', 'html': '&lt;script&gt;alert(&#x27;hack&#x27;)&lt;/script&gt;'}"}
