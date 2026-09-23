@@ -5,7 +5,7 @@
 ---
 
 ### 📋 Thông tin chung
-- **Môn học:** Lập trình An ninh Thông tin / Lập trình An toàn
+- **Môn học:** Thực hành Lập trình An ninh Thông tin 
 - **Sinh viên thực hiện:** [Nhan Huỳnh Lâm]
 - **Mã số sinh viên (MSSV):** [2387700037]
 - **Lớp / Nhóm:** ST4
