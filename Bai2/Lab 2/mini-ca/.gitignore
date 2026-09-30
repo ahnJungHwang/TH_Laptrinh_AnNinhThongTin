@@ -1,0 +1,6 @@
+.DS_Store
+gitsecure.log
+certs/
+*.pem
+__pycache__/
+*.pyc
