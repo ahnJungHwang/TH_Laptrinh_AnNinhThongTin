@@ -1,13 +1,14 @@
+import os
 from api_gateway.gateway import APIGateway
 from token_manager.manager import TokenManager
 import pytest
 
 @pytest.fixture
 def client():
-    secret = "mysecret"
-    gateway = APIGateway(secret)
+    jwt_secret = os.getenv("TEST_JWT_SECRET", "test_mock_secret")
+    gateway = APIGateway(jwt_secret)
     gateway.app.config["TESTING"] = True
-    return gateway.app.test_client(), TokenManager(secret)
+    return gateway.app.test_client(), TokenManager(jwt_secret)
 
 def test_protected_route_with_valid_token(client):
     test_client, manager = client
