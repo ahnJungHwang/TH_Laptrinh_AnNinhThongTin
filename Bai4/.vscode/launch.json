@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Lab 1: Chạy Scanner CLI (main.py)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/Lab1/web-vuln-scanner/main.py",
+            "cwd": "${workspaceFolder}/Lab1/web-vuln-scanner",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Lab 1: Chạy Web UI (ui/app.py)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/Lab1/web-vuln-scanner/ui/app.py",
+            "cwd": "${workspaceFolder}/Lab1/web-vuln-scanner/ui",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Lab 2: Chạy JWT Gateway (main.py)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/Lab2/jwt-security-tools/main.py",
+            "cwd": "${workspaceFolder}/Lab2/jwt-security-tools",
+            "console": "integratedTerminal"
+        }
+    ]
+}
