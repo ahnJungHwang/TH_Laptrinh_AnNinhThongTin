@@ -36,7 +36,8 @@ Bai6/
 │   └── 6.2.2/                         # Hình ảnh minh chứng Bài 6.2.2 (Tạo pipeline CI/CD phức tạp)
 │       ├── image1.png
 │       ├── image2.png
-│       └── image3.png
+│       ├── image3.png
+│       └── image4.png
 ├── pipeline-tutorial/                 # Mã nguồn dự án Docusaurus (Bài 6.2.2)
 │   ├── blog/
 │   ├── docs/
@@ -220,6 +221,15 @@ Bai6/
 
    ![Kết quả các Pipeline trong bài 6.2.2](images/6.2.2/image3.png)
    *Hình 16: Cả 3 lần nâng cấp cấu hình Pipeline (`#2997198896`, `#2997199307`, `#2997199549`) đều vượt qua thành công (`Passed`).*
+
+---
+
+### Bước 3: Truy cập trang web Docusaurus được triển khai trên GitLab Pages
+- Sau khi job `pages` và `pages:deploy` hoàn tất, truy cập vào **Deploy > Pages** và mở đường dẫn trang web được cấp bởi GitLab Pages (`https://lam-pipeline-tutorial-project-38f8b1.gitlab.io`).
+- Trang web tĩnh **Docusaurus (`My Site - Dinosaurs are cool`)** hiển thị đầy đủ giao diện, thanh điều hướng (`Tutorial`, `Blog`) và các thành phần React.
+
+   ![Giao diện trang web Docusaurus trên GitLab Pages](images/6.2.2/image4.png)
+   *Hình 17: Truy cập thành công trang web Docusaurus sau khi triển khai tự động qua GitLab Pages.*
 
 ---
 
