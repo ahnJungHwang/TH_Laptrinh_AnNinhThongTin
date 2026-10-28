@@ -14,6 +14,8 @@
 
 ---
 
+Link gitlab: https://gitlab.com/devsecops-lab2981744/lam-pipeline-tutorial-project
+
 ## 2. CẤU TRÚC THƯ MỤC BÀI 6
 
 ```text
@@ -233,8 +235,5 @@ Bai6/
 
 ---
 
-## 5. KẾT LUẬN
-- Đã hoàn thành toàn bộ yêu cầu của **Bài 6 (6.2.1 và 6.2.2)**:
-  1. Thiết lập dự án và xây dựng thành công pipeline đa giai đoạn (`build`, `test`, `deploy`) trên GitLab CI/CD.
-  2. Khởi tạo, cấu hình và tự động hóa quy trình đóng gói (`build-job`) cũng như triển khai (`pages`) ứng dụng **Docusaurus** lên **GitLab Pages** thông qua Docker runner (`image: node`) và cơ chế truyền tải `artifacts`.
+
 
